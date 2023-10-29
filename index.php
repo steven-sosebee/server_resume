@@ -1,5 +1,6 @@
 <?php
 // include main configuration file
+    require_once __DIR__."/env/config.php";
     require_once __DIR__. "/config/config_defs.php";
     session_start();
 

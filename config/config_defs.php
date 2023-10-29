@@ -3,7 +3,7 @@
 // Definitions and configs...
     define("MODELS_PATH", __DIR__."/../models/");
     $privateConfig = parse_ini_file(PROJECT_ROOT_PATH.'/../private/config.ini');
-    $publicConfig = parse_ini_file(PROJECT_ROOT_PATH.'/config/config.ini');
+    $publicConfig = parse_ini_file(__DIR__.'/config.ini');
     ini_set("session.save_path", PROJECT_ROOT_PATH."/sessions");
     define("DB_HOST",$privateConfig['db_host']);
     define("DB_USERNAME",$privateConfig['db_userName']);

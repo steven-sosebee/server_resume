@@ -34,6 +34,7 @@
     require MODELS_PATH."ApplicationModels/index.php";
     require_once MODELS_PATH."keywordsModels/index.php";
     require_once MODELS_PATH."coverLetterModels/index.php";
+    require_once MODELS_PATH."responsibilities.php";
     require MODELS_PATH."connection.php";
     // require MODELS_PATH."controller.php";
 

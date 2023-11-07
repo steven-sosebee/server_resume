@@ -25,65 +25,73 @@
             return $this->output;
         }
 
+        function groupBy($data, $groupBy){
+            $result = [];
+            foreach ($data as $i){
+                $result[$i[$groupBy]][]=$i;
+            }
+            return $result;
+        }
+
         // Create Data
 
-        public function submit($inputs) {
+        // public function submit($inputs) {
             
-            try{
-                $stmt = self::executeQuery($SQL,$params);
-                $this->output = array(
-                    'rows inserted' => self::getAffectedRows($stmt),
-                    'ID' => self::getNewID($stmt)
-                );}
-            catch (Exception $e){
-                $this->output = $e->getMessage();
-            }
-        }
+        //     try{
+        //         $stmt = self::executeQuery($SQL,$params);
+        //         $this->output = array(
+        //             'rows inserted' => self::getAffectedRows($stmt),
+        //             'ID' => self::getNewID($stmt)
+        //         );}
+        //     catch (Exception $e){
+        //         $this->output = $e->getMessage();
+        //     }
+        // }
 
 // Get Data
-        public function list($inputs) {
-            $SQL = "SELECT * FROM ".self::TABLE;
-            $params = array();
-            try{
-                $stmt = self::executeQuery($SQL, $params);
-                $this->output = self::getData($stmt);
-            }
-            catch (Exception $e){
-                $this->output = $e->getMessage();
+        // public function list($inputs) {
+        //     $SQL = "SELECT * FROM ".self::TABLE;
+        //     $params = array();
+        //     try{
+        //         $stmt = self::executeQuery($SQL, $params);
+        //         $this->output = self::getData($stmt);
+        //     }
+        //     catch (Exception $e){
+        //         $this->output = $e->getMessage();
 
-            }
-        }
+        //     }
+        // }
 
-        public function select($inputs) {
-            $SQL = "SELECT * FROM ".self::TABLE." WHERE id = ?";
-            $params = array(
-                $inputs['id']
-            );
-            try{
-                $stmt = self::executeQuery($SQL, $params);
-                $this->output = self::getData($stmt);
-            }
-            catch (Exception $e){
-                $this->output = $e->getMessage();
+        // public function select($inputs) {
+        //     $SQL = "SELECT * FROM ".self::TABLE." WHERE id = ?";
+        //     $params = array(
+        //         $inputs['id']
+        //     );
+        //     try{
+        //         $stmt = self::executeQuery($SQL, $params);
+        //         $this->output = self::getData($stmt);
+        //     }
+        //     catch (Exception $e){
+        //         $this->output = $e->getMessage();
 
-            }
-        }
+        //     }
+        // }
 
 // Delete Data
 
-        public function delete($inputs) {
-            $SQL = "DELETE FROM ".self::TABLE." WHERE id = ?";
-            $params = array(
-                $inputs['id']
-            );
-            try{
-                $stmt = self::executeQuery($SQL,$params);
-                $this->output = array(
-                    'rows deleted' => self::getAffectedRows($stmt)
-                );}
-            catch (Exception $e){
-                $this->output = $e->getMessage();
-            }
-        }
+        // public function delete($inputs) {
+        //     $SQL = "DELETE FROM ".self::TABLE." WHERE id = ?";
+        //     $params = array(
+        //         $inputs['id']
+        //     );
+        //     try{
+        //         $stmt = self::executeQuery($SQL,$params);
+        //         $this->output = array(
+        //             'rows deleted' => self::getAffectedRows($stmt)
+        //         );}
+        //     catch (Exception $e){
+        //         $this->output = $e->getMessage();
+        //     }
+        // }
 }
 ?>

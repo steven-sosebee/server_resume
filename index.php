@@ -5,22 +5,23 @@
     session_start();
 
 
-    $db_test = $publicConfig['DB_ROOT'].$publicConfig['DB_RESUME'];
+    // $db_location = $publicConfig['DB_ROOT'].$publicConfig['DB_RESUME'];
+    // $db = new DBConnection($db_location);
 
-    $db = new DBConnection($db_test);
-
+    define("DB",DB_ROOT.DB_RESUME);
+    // $db = new Database;
     $res['url'] = $uri;
     $res['params'] = $params;
     
     try{
     
 //connect to the database.   
-        $db->connect();
-        $res['connection'] =$db->getConnectionDetails();
+        // $db->connect();
+        // $res['connection'] =$db->getConnectionDetails();
 
 // generic code for selecting mode and connecting to database...
-        $apiCall = (new $queryString['class']($db->connection));
-    
+        // $apiCall = (new $queryString['class']($db->connection));
+        $apiCall = (new $queryString['class']());
 // chooses the action to be completed and passes paramneters to action.
         switch ($method) {
             case 'GET':
@@ -37,12 +38,12 @@
         }
 // returns output from models to response object
 
-        $res['data'] = $apiCall;
+        $res['data'] = $apiCall->getOutput();
 
         echo json_encode($res);
-        $db->disconnect();
+        // $db->disconnect();
     } catch (Exception $err){
-        $db->disconnect();
+        // $db->disconnect();
         echo json_encode($err);
     }
 

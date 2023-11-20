@@ -31,7 +31,7 @@
 // Models
     
     require_once MODELS_PATH."_base.php";
-    require_once MODELS_PATH."test.php";
+    // require_once MODELS_PATH."test.php";
     require_once MODELS_PATH."resume.php";
     require_once MODELS_PATH."application.php";
     require_once MODELS_PATH."job.php";

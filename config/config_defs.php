@@ -13,7 +13,8 @@
     define("EMAIL_FROM",$privateConfig['email_from']);
     define("EMAIL_PASSWORD",$privateConfig['email_password']);
     define("EMAIL_PORT", $privateConfig['email_port']);
-    define("DB_RESUME", $privateConfig['db_resume']);
+    define("DB_RESUME", $publicConfig['DB_RESUME']);
+    define("DB_ROOT", $publicConfig['DB_ROOT']);
     // define("USERDB", $privateConfig['userDB']);
     // define("PUBLIC_KEY",$privateConfig['push_PublicKey']);
     // define("PRIVATE_KEY",$privateConfig['push_PrivateKey']);
@@ -28,14 +29,23 @@
     $params= json_decode(file_get_contents("php://input"),true);
 
 // Models
-
-    require MODELS_PATH."index.php";
-    require MODELS_PATH."ResumeModels/index.php";
-    require MODELS_PATH."ApplicationModels/index.php";
-    require_once MODELS_PATH."keywordsModels/index.php";
-    require_once MODELS_PATH."coverLetterModels/index.php";
-    require_once MODELS_PATH."responsibilities.php";
-    require MODELS_PATH."connection.php";
+    
+    require_once MODELS_PATH."_base.php";
+    require_once MODELS_PATH."test.php";
+    require_once MODELS_PATH."resume.php";
+    require_once MODELS_PATH."application.php";
+    require_once MODELS_PATH."job.php";
+    require_once MODELS_PATH."skill.php";
+    // require MODELS_PATH."test.php";
+    // require_once MODELS_PATH."keyword.php";
+    // require_once MODELS_PATH."coverLetter.php";
+    // require_once MODELS_PATH."responsibilities.php";
+    // require_once MODELS_PATH."jobs.php";
+    // require_once MODELS_PATH."jobs copy.php";
+    
+    // require MODELS_PATH."connection.php";
+    require_once MODELS_PATH."database.php";
+    // require_once MODELS_PATH."createApplication.php";
     // require MODELS_PATH."controller.php";
 
 // Push notification models

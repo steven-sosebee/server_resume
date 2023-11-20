@@ -1,54 +1,60 @@
 <?php
-class Database
-{
-    protected $connection = null;
- 
-    public function __construct()
-    {
-        try {
-            $this->connection = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_DATABASE_NAME);
-         
-            if ( mysqli_connect_errno()) {
-                throw new Exception("Could not connect to database.");   
-            }
-        } catch (Exception $e) {
-            throw new Exception($e->getMessage());   
-        }           
+
+class Database {
+    static protected $instance;
+    // protected $connection;
+
+    // function __construct($db = DB, $host = DB_HOST, $port = DB_PORT, $userName = DB_USERNAME, $password = DB_PASSWORD){
+    function __construct(){
+        $this->connected = 'not connected';
+        $this->password = DB_PASSWORD;
+        $this->userName = DB_USERNAME;
+        $this->db = DB;
+        $this->port = DB_PORT;
+        $this->host = DB_HOST;        
+        $this->execParams = [];  
+        $this->inTransaction = false;
+        $this->commit = false;
+        $this->time = time();
+        $this->id = rand();
+        $this->connect();  
     }
- 
-    public function select($query = "" , $params = [])
-    {
-        try {
-            $stmt = $this->executeStatement( $query , $params );
-            $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);               
-            $stmt->close();
- 
-            return $result;
-        } catch(Exception $e) {
-            throw New Exception( $e->getMessage() );
+    function __destruct(){
+        $this->disconnect();
+    }
+
+    public static function getInstance() {
+        // echo self::$connected;
+        if(!self::$instance) {
+            // get the arguments to the constructor from configuration somewhere
+            self::$instance = new self();
         }
-        return false;
+ 
+        return self::$instance;
     }
- 
-    private function executeStatement($query = "" , $params = [])
-    {
-        try {
-            $stmt = $this->connection->prepare( $query );
- 
-            if($stmt === false) {
-                throw New Exception("Unable to do prepared statement: " . $query);
-            }
- 
-            if( $params ) {
-                $stmt->bind_param($params[0], $params[1]);
-            }
- 
-            $stmt->execute();
- 
-            return $stmt;
-        } catch(Exception $e) {
-            throw New Exception( $e->getMessage() );
-        }   
+    
+    // standard connectivity
+    function connect(){
+        try{
+            $this->connection= new PDO(
+                "mysql:host=".$this->host.
+                ";port=".$this->port.
+                ";dbname=".$this->db
+                , $this->userName
+                , $this->password,
+            array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+            $this->connected = 'connected';
+            // $this->instance = true;
+        } catch (PDOException $e) {                 
+            $this->connected = $e->getMessage();
+        }
+    }
+    public function getConnectionDetails(){
+        return $this->connected;
+    }
+// close connection to DB.  TODO add more code for error monitoring.
+    function disconnect(){
+        $this->connection = NULL;
     }
 }
 ?>

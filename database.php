@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__."/../config/config_defs.php";
-require_once __DIR__."/../env/config.php";
+require_once __DIR__."/config/config_defs.php";
+require_once __DIR__."/env/config.php";
 class Database {
     static protected $instance;
     // protected $connection;

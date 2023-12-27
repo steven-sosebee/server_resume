@@ -36,10 +36,15 @@
     require_once MODELS_PATH."application.php";
     require_once MODELS_PATH."job.php";
     require_once MODELS_PATH."skill.php";
+    require_once MODELS_PATH."responsibility.php";
+    require_once MODELS_PATH."duty.php";
+    require_once MODELS_PATH."accomplishment.php";
+    require_once MODELS_PATH."templateAccomplishment.php";
+    require_once MODELS_PATH."resumeTemplate.php";
     // require MODELS_PATH."test.php";
     // require_once MODELS_PATH."keyword.php";
     // require_once MODELS_PATH."coverLetter.php";
-    // require_once MODELS_PATH."responsibilities.php";
+    
     // require_once MODELS_PATH."jobs.php";
     // require_once MODELS_PATH."jobs copy.php";
     

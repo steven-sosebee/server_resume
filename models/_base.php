@@ -4,6 +4,9 @@
 
 // utility functions to generate queries
         function __construct(){
+            $this->db = Database::getInstance();
+            $this->connection = $this->db->connection;
+            $this->output['status'] = 'not started';
             $this->SQLType = array(
                 'SELECT'=>0,
                 'INSERT'=>1,
@@ -294,6 +297,7 @@
 
         }
     }
+    
     public function insertRecords ($inputs,$entry=true){
         $records = $inputs['records'];
         $newRecords = array();

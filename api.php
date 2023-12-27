@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__."/../env/config.php";
+require_once __DIR__."/env/config.php";
 require_once __DIR__."/database.php";
 require_once __DIR__."/crud.php";
 require_once __DIR__."/queryCreation.php";

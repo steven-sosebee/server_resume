@@ -5,22 +5,24 @@
     function create ($connection, $SQL, $params=array()) {
         
         try {
-            $stmt = executeQuery($connection, $SQL, $params);            
+            $stmt = executeQuery($connection, $SQL, $params);
+            $error = !($stmt instanceof PDOStatement);
+            // $error = str_starts_with($stmt,"SQLSTATE");
+            if ($error){return $stmt;}
+            $data = array(
+                'ID' => $connection->lastInsertId()
+            );
+            return $data;
         }
-
         catch (Exception $e){
-            $error = $e->getMessage();
-            return $error;
+            $data = $e->getMessage();
+            return $data;
         }
         catch (PDOException $pdo){
-            $error = $pdo->getMessage();
-            return $error;
+            // $data = $pdo->getMessage();
+            $data = $stmt->errorInfo();
+            return $data;
         }
-
-        $data = array(
-            'ID' => $connection->lastInsertId()
-        );
-        return $data;
     }
 
     function read ($connection, $SQL, $params=array()) {
@@ -36,24 +38,27 @@
     }
 
     function update ($connection, $SQL, $params=array()) {
-        try{
-        $stmt = executeQuery($connection, $SQL, $params);
-        $data = array(
-            "rows updated"=>$stmt->rowCount()
-            // "stmt" => $stmt
-            // "type" => is_a($stmt)
-        );}
+        try {
+            $stmt = executeQuery($connection, $SQL, $params);
+            $error = !($stmt instanceof PDOStatement);
+            // $error = str_starts_with($stmt,"SQLSTATE");
+            if ($error){return $stmt;}
+            $data = array(
+                'rows updated' => $stmt->rowCount()
+            );
+            return $data;
+        }
         catch (Exception $e){
-            $error = $e->getMessage();
-            return $error;
+            $data = $e->getMessage();
+            return $data;
         }
         catch (PDOException $pdo){
-            $error = $pdo->getMessage();
-            return $error;
+            // $data = $pdo->getMessage();
+            $data = $stmt->errorInfo();
+            return $data;
         }
-        return $data;
-    }
-
+    };
+    
     function delete ($connection, $SQL, $params=array()) {
         try {
             $stmt = executeQuery($connection, $SQL, $params);
@@ -76,7 +81,7 @@
         try{
             $stmt = $connection->prepare($SQL);
             $stmt->execute($params);
-            
+            return $stmt;    
         }
         catch (Exception $e){
             $error = $e->getMessage();
@@ -88,6 +93,6 @@
             // $output['error'] = $error;
             return $error;
         }
-        return $stmt;
+        
     }
 ?>

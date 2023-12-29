@@ -1,7 +1,7 @@
 <?php
     require_once __DIR__."/index.php";
 
-    $SQL = "UPDATE resumeJobs SET title=:title, description=:description, start=:start, end=:end, resumeId=:resumeId";
+    $SQL = "UPDATE resumeJobs SET title=:title, description=:description, organization=:organization, start=:start, end=:end, resumeId=:resumeId";
     if(!$query->{'criteria'}){
         die;
     };

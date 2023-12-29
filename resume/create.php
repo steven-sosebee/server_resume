@@ -5,5 +5,7 @@ require_once __DIR__."/index.php";
     
     $data = create($connection, $SQL, $inputs);
     // $data=$inputs;
-    echo json_encode($data);
+    echo json_encode([
+        "data"=>$data
+    ]);
 ?>

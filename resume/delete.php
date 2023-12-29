@@ -10,5 +10,7 @@
     $data['where']=$WHERE;
     $data['query']=$query;
     $data['SQL']=$SQL;
-    echo json_encode($data);
+    echo json_encode([
+        "data"=>$data
+    ]);
 ?>

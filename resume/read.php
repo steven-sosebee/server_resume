@@ -10,6 +10,7 @@ require_once __DIR__."/index.php";
             "data"=>$data
         ]);
         die;
+        
     }
     
     $data = read($connection, $SQL);

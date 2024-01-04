@@ -9,5 +9,6 @@ require_once __DIR__."/index.php";
     $data = read($connection, $SQL,$WHERE['params']);
     echo json_encode([
         "data"=>$data
+        
     ]);
 ?>

@@ -1,0 +1,10 @@
+{
+    "joins":{
+        "applicationQualifiations":{
+            "skills":"join qualificationSkills ON qualificationSkills.skillId = skills.id"
+        },
+        "skills":{
+            "skillsTypes":"join skillTypes ON skillTypes.id = skills.skillType"
+        }
+    }
+}

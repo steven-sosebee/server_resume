@@ -2,6 +2,7 @@
 
 // Definitions and configs...
     // define("MODELS_PATH", __DIR__."/../models/");
+    define("PROJECT_ROOT_PATH", __DIR__ . "/../");
     $privateConfig = parse_ini_file(PROJECT_ROOT_PATH.'/../private/config.ini');
     $publicConfig = parse_ini_file(__DIR__.'/config.ini');
     // ini_set("session.save_path", PROJECT_ROOT_PATH."/sessions");
@@ -21,7 +22,7 @@
     // parse_str($_SERVER['QUERY_STRING'], $queryString);
     // $method = $_SERVER['REQUEST_METHOD'];
 // API inputs...
-    $params= json_decode(file_get_contents("php://input"),true);
+    // $params= json_decode(file_get_contents("php://input"),true);
 
 // Models
     

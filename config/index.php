@@ -2,7 +2,7 @@
 
 // Definitions and configs...
     // define("MODELS_PATH", __DIR__."/../models/");
-    require_once __DIR__."/../env.config.php";
+    require_once __DIR__."/../env/config.php";
     
     $privateConfig = parse_ini_file(PROJECT_ROOT_PATH.'/../private/config.ini');
     $publicConfig = parse_ini_file(__DIR__.'/config.ini');

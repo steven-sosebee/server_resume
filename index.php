@@ -1,7 +1,7 @@
 <?php
 // include main configuration file
     require_once __DIR__."/env/config.php";
-    require_once __DIR__. "/config/config_defs.php";
+    require_once __DIR__. "/config/index.php";
 
     
     // session_start();

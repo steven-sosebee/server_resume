@@ -5,6 +5,10 @@
         },
         "skills":{
             "skillsTypes":"join skillTypes ON skillTypes.id = skills.skillType"
+        },
+        "resumeTemplates":{
+            "jobs": "join resumeJobs ON resumeTemplates.id = resumeJobs.resumeId",
+            "application": "join applications ON applications.id = resumeTemplates.applicationId"
         }
     }
 }

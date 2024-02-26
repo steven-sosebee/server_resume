@@ -13,7 +13,7 @@
             }
             $filter = $WHERE['filter'];
             $filterParams = $WHERE['params'];
-            return array('filter'=>$filter, 'filterParams'=>$filterParams);
+            return array('filter'=>$filter, 'filterParams'=>$filterParams,'parsed'=>$queryArray);
         }
         catch (Exception $error){
             $queryArray = $error->getMessage();

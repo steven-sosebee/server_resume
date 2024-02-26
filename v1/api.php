@@ -5,12 +5,12 @@
     require_once __DIR__."/api/index.php";
     require_once __DIR__."/SQL/index.php";
     require_once __DIR__."/objects/queries/index.php";
-    
-    // require_once __DIR__."/config/schema/index.php";
+    require_once __DIR__."/classes/index.php";
+    require_once __DIR__."/config/schema/index.php";
 
     // Create database connection;
     $db = Database::getInstance();
-    $connection = $db->connection;
+    // $connection = $db->connection;
     
     // get the HTTP method for determining the endpoint;
     $method = $_SERVER['REQUEST_METHOD'];

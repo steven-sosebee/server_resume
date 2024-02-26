@@ -3,6 +3,11 @@
 // require_once __DIR__."/env/config.php";
 class Database {
     static protected $instance;
+    private $password;
+    private $userName;
+    private $db;
+    private $port;
+    private $host;
     // protected $connection;
 
     // function __construct($db = DB, $host = DB_HOST, $port = DB_PORT, $userName = DB_USERNAME, $password = DB_PASSWORD){

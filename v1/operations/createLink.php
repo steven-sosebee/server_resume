@@ -1,6 +1,8 @@
 <?php
-
-    function createLink () {
-        
+    
+    function createLink ($db, $parentField,$parentId,$childField,$childId) {
+                
     }
+
+    createLink($db,)
 ?>

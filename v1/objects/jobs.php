@@ -22,10 +22,10 @@
     switch ($method) {
         case 'GET':
 
-            $SQL = SELECTQuery($table,'*',$filter);
-            $jobs = read($db,$SQL,$filterParams);
-            $res = $jobs;
-
+            // $SQL = SELECTQuery($table,'*',$filter);
+            // $jobs = read($db,$SQL,$filterParams);
+            // $res = $jobs;
+            
             // foreach ($jobs as $job) {
             //     $primaryId = $job['id'];
                 // $skills = readLinkedTable($db,$primaryId,$linkedTables['Skills']['foreignKey'],$linkedTables['Skills']['SQL'],$linkedTables['Skills']['childTable']);

@@ -5,4 +5,5 @@
     require_once "readQuery.php";
     require_once "createQuery.php";
     require_once "updateQuery.php";
+    require_once "join.php";
 ?>

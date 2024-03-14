@@ -1,7 +1,7 @@
 <?php
     require_once "../api.php";
     
-    $table = "qualifications";
+    $table = "applicationQualifications";
 
     switch ($method) {
         case 'GET':

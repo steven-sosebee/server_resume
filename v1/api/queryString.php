@@ -12,11 +12,11 @@
                 $WHERE = simpleFilter($queryArray);
             }
             $filter = $WHERE['filter'];
-            $filterParams = $WHERE['params'];
+            $filterParams = $WHERE['filterParams'];
             return array('filter'=>$filter, 'filterParams'=>$filterParams,'parsed'=>$queryArray);
         }
         catch (Exception $error){
-            $queryArray = $error->getMessage();
+            return $error->getMessage();
         }
     }
 ?>

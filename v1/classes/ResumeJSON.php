@@ -36,12 +36,25 @@
             parent::__construct();
         }
         
-        public function get(){
-            $SQL = "SELECT * FROM resumes";
-            $arr = read($this->conn,$SQL);
+        // public function getResume($filter){
+        //     // $SQL = "SELECT * FROM resumes";
+
+        //     $arr = read($this->conn,$SQL);
+        //     return array_map(function($item){
+        //         return ['id'=>$item['id'], 'name'=>$item['name'],'resume'=>json_decode($item['resume']), 'uuid'=>$item['uuid']];
+        //     },$arr);
+        // }
+
+        public function getResumes($filter=null){
+            if(isset($filter)){
+                $SQL = SELECTQuery($this->table,'*',$filter['filter']);
+                $arr = read($this->conn,$SQL,$filter['filterParams']);
+            } else {
+                $SQL = "SELECT * FROM resumes";
+                $arr = read($this->conn,$SQL);
+            }
             return array_map(function($item){
                 return ['id'=>$item['id'], 'name'=>$item['name'],'resume'=>json_decode($item['resume']), 'uuid'=>$item['uuid']];
-                // return (new ResumeJSON())->setValues($item['resume'],$item['name']);
             },$arr);
         }
 
@@ -50,7 +63,7 @@
             $newResume = new ResumeJSON;
             $newResume->setValues(json_encode($oldResume->resume),$newName);
             $newResume = $newResume->convertToArray();
-            $newRecord = (new ResumeJSONMapper())->createOne($newResume,'resumes');
+            $newRecord = (new ResumeJSONMapper())->create($newResume,'resumes');
             // return $newResume;
             return $newRecord;
             

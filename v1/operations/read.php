@@ -13,6 +13,8 @@ function read ($db,$SQL, $params=array()) {
     catch (PDOException $pdo){
         $data = $pdo->getMessage();
         return $data;
+    } catch (Exception $e) {
+        return $e->getMessage();
     }
 }
 ?>

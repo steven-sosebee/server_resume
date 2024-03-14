@@ -5,7 +5,7 @@
         'eq'=>'=',
         'gte'=>'>=',
         'lte'=>'<=',
-        'ne'=>'!='
+        'ne'=>'!=',
     ));
 
     function setFilter(array $criteria) {            
@@ -28,21 +28,26 @@
         }
         $criteria = "(".implode(") OR (", $ORcriteria).")";
 
-        return array ('filter'=>$criteria, 'params'=>$params);
+        return array ('filter'=>$criteria, 'filterParams'=>$params);
     }
 
     function simpleFilter(array $criteria) {
-        $int = 100;
-        $params = array();
-        // $criteria = array();
-
-        foreach ($criteria as $key=>$value) {
-            $encrypt = dechex($int);
-            $params[":$encrypt"] = $value;
-            $filter[] = "$key = :$encrypt";    
-            $int++;
+        try{
+            $int = 100;
+            $params = array();
+            // $criteria = array();
+            
+            foreach ($criteria as $key=>$value) {
+                $encrypt = dechex($int);
+                $params[":$encrypt"] = $value;
+                $filter[] = "$key = :$encrypt";    
+                $int++;
+            }
+            $filter = implode(" AND ", $filter);
+            return array ('filter'=>$filter, 'filterParams'=>$params);
+        } catch (Exception $e){
+            return $e->getMessage();
         }
-        $filter = implode(" AND ", $filter);
-        return array ('filter'=>$filter, 'params'=>$params);
+        
     }
 ?>

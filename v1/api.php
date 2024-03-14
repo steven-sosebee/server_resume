@@ -33,45 +33,14 @@
         $filter = $queryArray['filter'];
         $filterParams = $queryArray['filterParams'];
     }
-    //     parse_str($_SERVER['QUERY_STRING'], $queryArray);
-    //     $filtered = true;
-
-    // // parse the encoded query if it exists;
-    //     try{
-    //         if(isset($queryArray["q"])){
-    //             $query = $queryArray["q"];
-    //             $query = base64_decode($query);
-    //             $queryArray = json_decode($query);
-    //             $WHERE = setFilter($queryArray);
-                
-    //         } else {
-    //             $WHERE = simpleFilter($queryArray);
-    //         }
-    //         $filter = $WHERE['filter'];
-    //         $filterParams = $WHERE['params'];
-
-    //     }
-    //     catch (Exception $error){
-    //         $queryArray = $error->getMessage();
-    //     }
-    // }
-    
-    // set inputs;
-    // if($method=='PATCH'){
-    //     $inputs=setUpdates($inputs);
-    // }
-
-    // if($method=='POST'){
-    //     $inputs=setInputs($inputs);
-    // }
-
+   
     $api = [
         'method'=>$method,
         'inputs'=>$HTTPinputs,
         'query'=>$query,
         'array'=>$queryArray,
         'filtered'=>$filtered,
-        // 'HTTPQuery'=>$_SERVER['QUERY_STRING'],
+        'HTTPQuery'=>$_SERVER['QUERY_STRING'],
         // 'WHERE'=>$WHERE,
         // 'PATCH'=>$_PATCH,
         'SERVER'=>$_SERVER,
